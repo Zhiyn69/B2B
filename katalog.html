@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk - B2B (Bersih Bersih Bandung)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class', 
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a2c7a',
+                        primaryDark: '#12205c',
+                        secondary: '#24751b',
+                        secondaryDark: '#195413',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+        // Script Tambahan: Deteksi Kategori dari URL Hash
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Ambil kata setelah tanda '#' di URL (contoh: 'Chemical')
+    const hash = window.location.hash.substring(1); 
+
+    if (hash) {
+        // 2. Cari tombol filter yang memiliki data-filter sesuai dengan hash tersebut
+        const targetBtn = document.querySelector(`.filter-btn[data-filter="${hash}"]`);
+        
+        if (targetBtn) {
+            // 3. Simulasikan klik pada tombol tersebut agar fungsi filter berjalan otomatis
+            targetBtn.click();
+            
+            // 4. Opsional: Scroll sedikit ke area produk agar user langsung melihat hasilnya
+            document.getElementById('filterContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+});
+
+    </script>
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        .dark ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #1a2c7a; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #374151; }
+        
+        /* Animasi mulus untuk modal pop-up */
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s ease-out; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-200 font-sans transition-colors duration-300">
+
+    <nav class="sticky top-0 z-40 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html" class="flex items-center text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-blue-400 font-medium transition group">
+                    <i class="fa-solid fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Kembali
+                </a>
+                
+                <div class="text-2xl font-extrabold tracking-tight">
+                    <span class="text-primary dark:text-blue-400">B</span><span class="text-secondary dark:text-green-500">2</span><span class="text-primary dark:text-blue-400">B</span> <span class="text-gray-400 font-medium text-lg ml-2 hidden sm:inline-block">| Katalog Produk</span>
+                </div>
+                
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition focus:outline-none">
+                    <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden"></i>
+                    <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary dark:bg-gray-900 pt-16 pb-24 border-b border-primaryDark dark:border-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Katalog Produk & Perlengkapan</h1>
+            
+            <div class="max-w-2xl mx-auto relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-search text-gray-400"></i>
+                </div>
+                <input type="text" id="searchInput" class="block w-full pl-11 pr-4 py-4 border border-transparent rounded-xl leading-5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all shadow-lg" placeholder="Cari produk (Cth: Taski R4, Mesin Vacuum)...">
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-24 relative z-10">
+        
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-2 flex flex-wrap justify-center gap-2 mb-10 border border-gray-100 dark:border-gray-700 transition-colors duration-300" id="filterContainer">
+            <button class="filter-btn active px-6 py-2 rounded-lg text-sm font-bold bg-primary text-white transition-all" data-filter="Semua">Semua</button>
+            <button class="filter-btn px-6 py-2 rounded-lg text-sm font-bold bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all" data-filter="Chemical">Chemical</button>
+            <button class="filter-btn px-6 py-2 rounded-lg text-sm font-bold bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all" data-filter="Mesin">Mesin & Alat</button>
+            <button class="filter-btn px-6 py-2 rounded-lg text-sm font-bold bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all" data-filter="Aksesori">Aksesori</button>
+        </div>
+
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            </div>
+        
+        <div id="noProductMsg" class="hidden text-center py-20">
+            <i class="fa-solid fa-box-open text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
+            <h3 class="text-xl font-bold text-gray-600 dark:text-gray-400">Produk tidak ditemukan</h3>
+            <p class="text-gray-500 mt-2">Coba gunakan kata kunci pencarian yang lain.</p>
+        </div>
+    </main>
+
+    <div id="productModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            
+            <div class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div id="modalContent" class="inline-block align-bottom bg-white dark:bg-gray-900 rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl w-full border border-gray-100 dark:border-gray-800 modal-enter">
+                <div class="absolute top-0 right-0 pt-4 pr-4 z-10">
+                    <button type="button" class="bg-white dark:bg-gray-800 rounded-full w-10 h-10 flex items-center justify-center text-gray-400 hover:text-gray-500 focus:outline-none shadow-md" onclick="closeModal()">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="sm:flex">
+                    <div class="w-full sm:w-2/5 bg-gray-50 dark:bg-gray-800 p-8 flex items-center justify-center">
+                        <img id="modalImg" src="" alt="Product" class="max-h-64 object-contain drop-shadow-xl">
+                    </div>
+                    
+                    <div class="w-full sm:w-3/5 p-8">
+                        <div class="uppercase tracking-wide text-xs font-bold text-secondary dark:text-green-500 mb-1" id="modalCategory">Kategori</div>
+                        <h3 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-2" id="modalTitle">Nama Produk</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed" id="modalDesc">Deskripsi detail produk akan muncul di sini.</p>
+                        
+                        <div class="mt-auto">
+                            <a href="https://wa.me/62027382" target="_blank" class="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-primary hover:bg-primaryDark transition-colors focus:outline-none">
+                                <i class="fa-brands fa-whatsapp text-lg mr-2 text-green-400"></i> Pesan Sekarang
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // 1. DATA-DRIVEN UI: INVENTARIS PRODUK B2B
+        // ==========================================
+        const products = [
+            {
+                id: 1,
+                name: "Diversey Taski Furniture Polish R4",
+                category: "Chemical",
+                image: "diverseygäó clax-« activ 4ap1_20260321_155058_0000.png",
+                desc: "Cairan pembersih dan pengkilap furnitur profesional. Diformulasikan khusus untuk merawat permukaan kayu, menjaga kilau alami, dan mencegah penumpukan debu. Cocok untuk area perkantoran dan perhotelan."
+            },
+            {
+                id: 2,
+                name: "Diversey Taski R9",
+                category: "Chemical",
+                image: "https://i.postimg.cc/Gh2nhvWW/Diversey_Taski_R9_20260321_134119_0000.png",
+                desc: "Pembersih khusus kamar mandi yang sangat efektif menghilangkan noda air, sisa sabun, dan kerak ringan pada ubin serta porselen. Meninggalkan aroma segar dan higienis."
+            },
+            {
+                id: 3,
+                name: "Diversey Taski Complete ProX",
+                category: "Chemical",
+                image: "https://i.postimg.cc/WbHLDhjv/Diversey_Taski_Complete_Pro_X_20260321_133908_0000.png",
+                desc: "Pelapis lantai (floor finish) tugas berat. Memberikan perlindungan ekstra pada permukaan lantai dengan kilap tahan lama yang tahan terhadap goresan lalu lintas tinggi."
+            },
+            {
+                id: 4,
+                name: "Taski Vacumat 44T",
+                category: "Mesin",
+                image: "https://i.postimg.cc/g2L93mkV/Taski_vacumat_44T_20260321_140708_0000.png",
+                desc: "Mesin pembersih elektronik vacuum basah dan kering dengan kapasitas tangki yang besar. Dirancang ergonomis dengan daya hisap tinggi untuk menunjang produktivitas area industri/komersial."
+            },
+            {
+                id: 5,
+                name: "Vacuum Bag 8/15 Plus",
+                category: "Aksesori",
+                image: "https://i.postimg.cc/kg00cz23/Salinan_dari_Diversey_Taski_My_Micro_Cloth_20260321_132332_0000.png",
+                desc: "Kantong debu pengganti berkualitas tinggi. Membantu menjaga daya hisap vacuum cleaner tetap optimal dan menyaring debu mikro agar tidak kembali ke udara ruangan."
+            }
+            // TAMBAHKAN PRODUK KE-6 SAMPAI 55 DI SINI NANTI
+        ];
+
+        // ==========================================
+        // 2. LOGIKA RENDERING & SPA (Single Page App)
+        // ==========================================
+        const grid = document.getElementById('productGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const noProductMsg = document.getElementById('noProductMsg');
+
+        // Fungsi mencetak kartu HTML dari data array
+        function renderProducts(dataToRender) {
+            grid.innerHTML = ''; // Bersihkan grid
+            
+            if(dataToRender.length === 0) {
+                noProductMsg.classList.remove('hidden');
+            } else {
+                noProductMsg.classList.add('hidden');
+                
+                dataToRender.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = "bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer";
+                    // Menambahkan fungsi openModal saat kartu diklik
+                    card.onclick = () => openModal(product);
+                    
+                    card.innerHTML = `
+                        <div class="h-56 bg-gray-50 dark:bg-gray-800 p-6 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute top-3 left-3 px-3 py-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur text-xs font-bold rounded-full text-secondary dark:text-green-500 border border-gray-100 dark:border-gray-700">
+                                ${product.category}
+                            </div>
+                            <img src="${product.image}" alt="${product.name}" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-md">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-tight">${product.name}</h3>
+                            <button class="mt-auto w-full text-center text-sm font-bold text-primary dark:text-blue-400 border border-primary dark:border-blue-500 rounded-lg py-2 group-hover:bg-primary group-hover:text-white dark:group-hover:bg-blue-600 transition-colors">
+                                Lihat Spesifikasi
+                            </button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // Render semua produk saat pertama kali halaman dibuka
+        renderProducts(products);
+
+        // ==========================================
+        // 3. FITUR PENCARIAN & FILTERING
+        // ==========================================
+        let currentFilter = 'Semua';
+
+        function filterAndSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            const filteredData = products.filter(product => {
+                const matchCategory = currentFilter === 'Semua' || product.category === currentFilter;
+                const matchSearch = product.name.toLowerCase().includes(searchTerm) || product.desc.toLowerCase().includes(searchTerm);
+                return matchCategory && matchSearch;
+            });
+            
+            renderProducts(filteredData);
+        }
+
+        // Event Search
+        searchInput.addEventListener('input', filterAndSearch);
+
+        // Event Filter Buttons
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Hapus style aktif dari semua tombol
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white');
+                    b.classList.add('bg-transparent', 'text-gray-600', 'dark:text-gray-300');
+                });
+                
+                // Tambahkan style aktif ke tombol yang diklik
+                e.target.classList.remove('bg-transparent', 'text-gray-600', 'dark:text-gray-300');
+                e.target.classList.add('bg-primary', 'text-white');
+                
+                currentFilter = e.target.getAttribute('data-filter');
+                filterAndSearch();
+            });
+        });
+        
+        const modal = document.getElementById('productModal');
+        const modalContent = document.getElementById('modalContent');
+        const mImg = document.getElementById('modalImg');
+        const mCat = document.getElementById('modalCategory');
+        const mTitle = document.getElementById('modalTitle');
+        const mDesc = document.getElementById('modalDesc');
+
+        function openModal(product) {
+            mImg.src = product.image;
+            mCat.innerText = product.category;
+            mTitle.innerText = product.name;
+            mDesc.innerText = product.desc;
+            
+            modal.classList.remove('hidden');
+            
+            setTimeout(() => {
+                modalContent.classList.add('modal-enter-active');
+            }, 10);
+        }
+
+        function closeModal() {
+            modalContent.classList.remove('modal-enter-active');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); 
+        }
+
+        
+        const html = document.documentElement;
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function updateIcons(isDark) {
+            if (isDark) {
+                darkIcon.classList.add('hidden'); lightIcon.classList.remove('hidden');
+            } else {
+                darkIcon.classList.remove('hidden'); lightIcon.classList.add('hidden');
+            }
+        }
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark'); updateIcons(true);
+        } else {
+            html.classList.remove('dark'); updateIcons(false);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
+            updateIcons(isDark);
+        });
+    </script>
+</body>
+</html>
