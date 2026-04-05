@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>B2B (Bersih Bersih Bandung) - Solusi Kebersihan Profesional</title>
 
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Tailwind Custom Configuration -->
     <script>
         tailwind.config = {
             darkMode: 'class', 
@@ -40,9 +44,6 @@
         ::-webkit-scrollbar-thumb { background: #1a2c7a; border-radius: 4px; }
         .dark ::-webkit-scrollbar-thumb { background: #374151; }
 
-        /* Utility class untuk toggle JS */
-        .display-none { display: none !important; }
-
         /* Custom mask-image class untuk efek gradasi menghilang pada gambar Hero */
         .mask-hero-fade {
             -webkit-mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);
@@ -52,31 +53,36 @@
 </head>
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-200 font-sans transition-colors duration-300 relative">
 
-    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300 relative">
+    <!-- 1. NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 
+                <!-- Logo B2B Custom -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="text-3xl font-extrabold tracking-tight">
                         <span class="text-primary dark:text-blue-400">B</span><span class="text-secondary dark:text-green-500">2</span><span class="text-primary dark:text-blue-400">B</span>
                     </a>
                 </div>
                 
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#kategori" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-blue-400 font-medium transition">Kategori</a>
                     <a href="#keunggulan" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-blue-400 font-medium transition">Keunggulan</a>
                     <a href="#lokasi" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-blue-400 font-medium transition">Lokasi</a>
                     
-                    <a href="#" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-blue-400 font-medium transition flex items-center gap-1">
+                    <a href="katalog.html" class="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-blue-400 font-medium transition flex items-center gap-1">
                         <i class="fa-solid fa-file-pdf"></i> Katalog
                     </a>
                     
-                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition focus:outline-none focus:ring-2 focus:ring-primary">
+                    <!-- Dark/Light Toggle Button -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition focus:outline-none">
                         <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden"></i>
                         <i id="theme-toggle-light-icon" class="fa-solid fa-sun hidden"></i>
                     </button>
                 </div>
 
+                <!-- Mobile Menu Button -->
                 <div class="flex md:hidden items-center space-x-4">
                     <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 transition">
                         <i id="theme-toggle-dark-icon-mobile" class="fa-solid fa-moon hidden"></i>
@@ -89,6 +95,7 @@
             </div>
         </div>
 
+        <!-- MOBILE DROPDOWN MENU -->
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 absolute w-full left-0 top-20 shadow-lg z-40">
             <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
                 <a href="#kategori" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800">Kategori Produk</a>
@@ -99,315 +106,202 @@
         </div>
     </nav>
 
-    <header class="relative pt-24 pb-24 lg:pt-32 lg:pb-40 overflow-hidden bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+    <!-- 2. HERO SECTION -->
+    <header class="relative pt-24 pb-24 lg:pt-32 lg:pb-40 overflow-hidden bg-gray-50 dark:bg-gray-950">
         
-        <div class="absolute inset-0 z-0 opacity-35 mask-hero-fade">
+        <!-- Background Image with Fade -->
+        <div class="absolute inset-0 z-0 opacity-75 mask-hero-fade">
             <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Background Gudang" class="w-full h-full object-cover object-top dark:brightness-[0.4]">
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-                
-                <div class="lg:col-span-8 text-center lg:text-left mb-12 lg:mb-0 lg:mx-0 mx-auto">
-                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm text-primary dark:text-blue-300 text-sm font-semibold mb-6 border border-blue-100 dark:border-gray-700 shadow-sm">
-                        <i class="fa-solid fa-shield-halved mr-2"></i> Industrial Grade Cleaning
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6 drop-shadow-md">
-                        Solusi Kebersihan <span class="text-primary dark:text-blue-400">Profesional & Industri</span> Berstandar Global di Bandung
-                    </h1>
-                    
-                    <p class="text-lg sm:text-xl text-gray-800 font-medium dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed drop-shadow-sm">
-                        B2B (Bersih Bersih Bandung) adalah mitra resmi untuk produk kimia dan alat pembersih kelas berat. Tingkatkan standar sanitasi dan higienitas bisnis Anda dengan produk unggulan dari Diversey.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                        <a href="#kontak" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-lg text-white bg-primary hover:bg-primaryDark transition-colors duration-300 shadow-xl shadow-primary/30">
-                            Konsultasi Kebutuhan <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </a>
-                        <a href="katalog.html" class="inline-flex justify-center items-center px-8 py-4 border-2 border-primary bg-white/80 backdrop-blur-sm dark:border-blue-500 text-base font-bold rounded-lg text-primary dark:text-blue-400 hover:bg-primary hover:text-white dark:bg-gray-900/80 dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300 shadow-lg">
-                            <i class="fa-solid fa-book-open mr-2"></i> Lihat Katalog Produk
-                        </a>
-                    </div>
+            <div class="max-w-4xl text-center lg:text-left">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm text-primary dark:text-blue-300 text-sm font-semibold mb-6 border border-blue-100 dark:border-gray-700 shadow-sm">
+                    <i class="fa-solid fa-shield-halved mr-2"></i> Industrial Grade Cleaning
                 </div>
-
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight mb-6 drop-shadow-md">
+                    Solusi Kebersihan <span class="text-primary dark:text-blue-400">Profesional & Industri</span> Berstandar Global di Bandung
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-gray-800 font-medium dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed drop-shadow-sm bg-white/40 dark:bg-black/40 backdrop-blur-sm p-5 rounded-2xl">
+                    B2B (Bersih Bersih Bandung) adalah mitra resmi untuk produk kimia dan alat pembersih kelas berat. Tingkatkan standar sanitasi dan higienitas bisnis Anda.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a href="#kontak" class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-lg text-white bg-primary hover:bg-primaryDark transition-all shadow-xl shadow-primary/30">
+                        Konsultasi Kebutuhan <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="katalog.html" class="inline-flex justify-center items-center px-8 py-4 border-2 border-primary bg-white/80 backdrop-blur-sm dark:border-blue-500 text-base font-bold rounded-lg text-primary dark:text-blue-400 hover:bg-primary hover:text-white dark:bg-gray-900/80 dark:hover:bg-blue-500 dark:hover:text-white transition-all shadow-lg">
+                        <i class="fa-solid fa-book-open mr-2"></i> Lihat Katalog Produk
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="border-y border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 py-10 overflow-hidden transition-colors duration-300">
+    <!-- 3. TRUST SIGNALS -->
+    <section class="border-y border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 py-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p class="text-center text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-10">Mitra Resmi & Merek Global Kami</p>
             
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-x-10 gap-y-12 items-center justify-items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-                
-                <div class="h-14 w-36 flex items-center justify-center" title="DIVERSEY">
-                    <img src="https://findlogovector.com/wp-content/uploads/2019/01/diversey-logo-vector.png" alt="Diversey" class="max-h-full max-w-full object-contain dark:invert dark:opacity-90 mix-blend-multiply dark:mix-blend-normal">
-                </div>
-
-                <div class="h-14 w-36 flex items-center justify-center" title="TASKI">
-                    <img src="https://i.postimg.cc/2yBKCXPw/Background-Eraser-20260404-192837502.png" alt="Taski" class="max-h-full max-w-full object-contain dark:invert dark:opacity-90 mix-blend-multiply dark:mix-blend-normal">
-                </div>
-
-                <div class="h-14 w-36 flex items-center justify-center" title="HOBART">
-                    <img src="https://i.postimg.cc/9MD9S379/unnamed.png" alt="Hobart" class="max-h-full max-w-full object-contain scale-150 dark:invert dark:opacity-90 mix-blend-multiply dark:mix-blend-normal hover:scale-[1.6] transition-transform">
-                </div>
-
-                <div class="h-14 w-36 flex items-center justify-center" title="SUMA">
-                    <img src="https://i.postimg.cc/FsX47jDz/Background-Eraser-20260404-192746691.png" alt="Suma" class="max-h-full max-w-full object-contain dark:invert dark:opacity-90 mix-blend-multiply dark:mix-blend-normal">
-                </div>
-
-                <div class="h-14 w-36 flex items-center justify-center" title="SOFT CARE">
-                    <img src="https://i.postimg.cc/rs6vRkCM/Background-Eraser-20260404-192738050.png" alt="Soft Care" class="max-h-full max-w-full object-contain scale-125 dark:invert dark:opacity-90 mix-blend-multiply dark:mix-blend-normal hover:scale-[1.35] transition-transform">
-                </div>
-
-                <div class="h-14 w-36 flex items-center justify-center" title="CLAX">
-                    <img src="https://i.postimg.cc/bw6WHbH6/Background-Eraser-20260404-192723402.png" alt="Clax" class="max-h-full max-w-full object-contain scale-150 dark:invert dark:opacity-90 mix-blend-multiply dark:mix-blend-normal hover:scale-[1.6] transition-transform">
-                </div>
-
+                <div class="h-14 w-36 flex items-center justify-center"><img src="https://findlogovector.com/wp-content/uploads/2019/01/diversey-logo-vector.png" class="max-h-full max-w-full object-contain dark:invert mix-blend-multiply dark:mix-blend-normal"></div>
+                <div class="h-14 w-36 flex items-center justify-center"><img src="https://i.postimg.cc/2yBKCXPw/Background-Eraser-20260404-192837502.png" class="max-h-full max-w-full object-contain dark:invert mix-blend-multiply dark:mix-blend-normal"></div>
+                <div class="h-14 w-36 flex items-center justify-center"><img src="https://i.postimg.cc/9MD9S379/unnamed.png" class="max-h-full max-w-full object-contain scale-150 dark:invert mix-blend-multiply dark:mix-blend-normal transition-transform hover:scale-[1.6]"></div>
+                <div class="h-14 w-36 flex items-center justify-center"><img src="https://i.postimg.cc/FsX47jDz/Background-Eraser-20260404-192746691.png" class="max-h-full max-w-full object-contain dark:invert mix-blend-multiply dark:mix-blend-normal"></div>
+                <div class="h-14 w-36 flex items-center justify-center"><img src="https://i.postimg.cc/rs6vRkCM/Background-Eraser-20260404-192738050.png" class="max-h-full max-w-full object-contain scale-125 dark:invert mix-blend-multiply dark:mix-blend-normal transition-transform hover:scale-[1.35]"></div>
+                <div class="h-14 w-36 flex items-center justify-center"><img src="https://i.postimg.cc/bw6WHbH6/Background-Eraser-20260404-192723402.png" class="max-h-full max-w-full object-contain scale-150 dark:invert mix-blend-multiply dark:mix-blend-normal transition-transform hover:scale-[1.6]"></div>
             </div>
         </div>
     </section>
 
+    <!-- 4. KATEGORI PRODUK (AKTIF DENGAN LINK) -->
     <section id="kategori" class="py-24 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Temukan Solusi Lengkap untuk Setiap Kebutuhan Pembersihan</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Temukan Solusi Lengkap untuk Setiap Kebutuhan</h2>
                 <div class="h-1 w-20 bg-secondary mx-auto rounded"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<a href="katalog.html#Chemical" class="block bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group cursor-pointer">
-    <article>
-        <div class="w-16 h-16 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300 text-primary dark:text-blue-400 text-3xl">
-            <i class="fa-solid fa-flask"></i>
-        </div>
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">Chemical Solutions</h3>
-        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Bahan kimia pembersih premium untuk hasil maksimal. Dari perawatan lantai berskala besar, sanitasi dapur komersial, hingga higienitas personal, seluruh formulasi dirancang untuk efisiensi dan keamanan tingkat tinggi.</p>
-        <div class="mt-6 flex items-center text-primary dark:text-blue-400 font-bold text-sm">
-            Lihat Produk <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
-        </div>
-    </article>
-</a>
+                <!-- Card 1: Chemical -->
+                <a href="katalog.html#Chemical" class="block bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg border border-gray-100 dark:border-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group">
+                    <article>
+                        <div class="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors text-primary dark:text-blue-400 text-3xl">
+                            <i class="fa-solid fa-flask"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary transition-colors">Chemical Solutions</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">Bahan kimia pembersih premium. Dari perawatan lantai, dapur komersial, hingga higienitas personal.</p>
+                        <div class="flex items-center text-primary dark:text-blue-400 font-bold text-sm">
+                            Lihat Produk <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </article>
+                </a>
 
-                <article class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-16 h-16 rounded-xl bg-green-50 dark:bg-green-900/30 flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors duration-300 text-secondary dark:text-green-400 text-3xl">
-                        <i class="fa-solid fa-broom"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Cleaning Tools & Equipment</h3>
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Peralatan manual ergonomis dengan durabilitas maksimal. Dirancang khusus untuk penggunaan tugas berat yang memudahkan rutinitas kebersihan harian Anda.</p>
-                </article>
+                <!-- Card 2: Cleaning Tools (Aksesori) -->
+                <a href="katalog.html#Aksesori" class="block bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg border border-gray-100 dark:border-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group">
+                    <article>
+                        <div class="w-16 h-16 rounded-2xl bg-green-50 dark:bg-green-900/30 flex items-center justify-center mb-6 group-hover:bg-secondary group-hover:text-white transition-colors text-secondary dark:text-green-400 text-3xl">
+                            <i class="fa-solid fa-broom"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-secondary transition-colors">Cleaning Tools & Equipment</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">Peralatan manual ergonomis dengan durabilitas maksimal untuk penggunaan tugas berat harian.</p>
+                        <div class="flex items-center text-secondary dark:text-green-500 font-bold text-sm">
+                            Lihat Produk <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </article>
+                </a>
 
-                <article class="bg-white dark:bg-gray-900 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group">
-                    <div class="w-16 h-16 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-6 group-hover:bg-gray-700 group-hover:text-white transition-colors duration-300 text-gray-700 dark:text-gray-300 text-3xl">
-                        <i class="fa-solid fa-gears"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Power Equipment & Accessories</h3>
-                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Mesin pembersih berat dan aksesori pendukung yang tangguh. Solusi teknologi canggih untuk menghemat waktu kerja tanpa mengorbankan kualitas kebersihan.</p>
-                </article>
+                <!-- Card 3: Power Equipment (Mesin) -->
+                <a href="katalog.html#Mesin" class="block bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg border border-gray-100 dark:border-gray-800 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 group">
+                    <article>
+                        <div class="w-16 h-16 rounded-2xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-6 group-hover:bg-gray-700 group-hover:text-white transition-colors text-gray-700 dark:text-gray-300 text-3xl">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-gray-700 dark:group-hover:text-white transition-colors">Power Equipment & Accessories</h3>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">Mesin pembersih berat dan aksesori tangguh untuk efisiensi waktu kerja tanpa kompromi kualitas.</p>
+                        <div class="flex items-center text-gray-700 dark:text-gray-400 font-bold text-sm">
+                            Lihat Produk <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </article>
+                </a>
             </div>
         </div>
     </section>
 
-    <section id="keunggulan" class="py-24 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <!-- 5. KEUNGGULAN -->
+    <section id="keunggulan" class="py-24 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-                
                 <div class="mb-12 lg:mb-0">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-8">Mengapa B2B Adalah Pilihan Tepat untuk Anda?</h2>
-                    
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-8">Mengapa B2B Adalah Pilihan Tepat?</h2>
                     <ul class="space-y-8">
                         <li class="flex items-start">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-circle-check text-2xl text-secondary dark:text-green-500"></i>
-                            </div>
-                            <div class="ml-4">
+                            <i class="fa-solid fa-circle-check text-2xl text-secondary mr-4"></i>
+                            <div>
                                 <h4 class="text-xl font-bold text-gray-900 dark:text-white">Produk Standar Internasional</h4>
-                                <p class="mt-2 text-gray-600 dark:text-gray-400">Sebagai Official Diversey Partner, seluruh rangkaian produk kami telah melewati standar kualitas dan keamanan global.</p>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Sebagai Official Diversey Partner, kualitas produk kami telah diakui secara global.</p>
                             </div>
                         </li>
                         <li class="flex items-start">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-circle-check text-2xl text-secondary dark:text-green-500"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-xl font-bold text-gray-900 dark:text-white">Solusi Kebersihan Terintegrasi</h4>
-                                <p class="mt-2 text-gray-600 dark:text-gray-400">Tidak perlu mencari ke banyak tempat. Kami menyediakan segala kebutuhan kebersihan Anda dalam satu pintu.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 mt-1">
-                                <i class="fa-solid fa-circle-check text-2xl text-secondary dark:text-green-500"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-xl font-bold text-gray-900 dark:text-white">Layanan Konsultasi Langsung</h4>
-                                <p class="mt-2 text-gray-600 dark:text-gray-400">Tim kami siap menganalisis dan merekomendasikan kombinasi produk yang paling tepat dan efisien.</p>
+                            <i class="fa-solid fa-circle-check text-2xl text-secondary mr-4"></i>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 dark:text-white">Solusi Terintegrasi</h4>
+                                <p class="mt-2 text-gray-600 dark:text-gray-400">Segala kebutuhan kebersihan bisnis Anda dalam satu pintu yang efisien.</p>
                             </div>
                         </li>
                     </ul>
                 </div>
-                
-                <div class="relative rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800 h-full min-h-[400px] flex items-center justify-center border border-gray-200 dark:border-gray-700 shadow-inner">
-                    <div class="text-center p-8 relative z-10">
+                <div class="relative rounded-3xl overflow-hidden bg-gray-100 dark:bg-gray-800 h-80 flex items-center justify-center border border-gray-200 dark:border-gray-700 shadow-inner">
+                    <div class="text-center p-8">
                         <i class="fa-solid fa-boxes-stacked text-7xl text-primary/80 dark:text-blue-500/80 mb-4"></i>
                         <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200">B2B Inventory System</h3>
-                        <p class="text-sm text-gray-500 mt-2">Penyimpanan Tepat, Distribusi Cepat</p>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
 
-    <section id="lokasi" class="py-24 bg-gray-50 dark:bg-gray-950 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <!-- 6. LOKASI -->
+    <section id="lokasi" class="py-24 bg-gray-50 dark:bg-gray-950 border-t border-gray-100 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Lokasi & Jangkauan Layanan</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-4">Lokasi & Operasional</h2>
                 <div class="h-1 w-20 bg-secondary mx-auto rounded"></div>
-                <p class="mt-6 text-lg text-gray-600 dark:text-gray-400">
-                    Kunjungi pusat distribusi kami atau hubungi tim untuk pengiriman langsung ke fasilitas bisnis Anda.
-                </p>
             </div>
 
-            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-stretch">
-                <div class="bg-white dark:bg-gray-900 rounded-2xl p-8 border border-gray-100 dark:border-gray-800 shadow-lg mb-10 lg:mb-0 flex flex-col justify-center transition-colors duration-300">
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Kantor & Pusat Distribusi B2B</h3>
-                    
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+                <div class="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-lg mb-10 lg:mb-0 flex flex-col justify-center">
                     <ul class="space-y-6">
                         <li class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary dark:text-blue-400">
-                                <i class="fa-solid fa-map-location-dot"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-gray-900 dark:text-white">Alamat Utama</h4>
-                                <p class="mt-1 text-gray-600 dark:text-gray-400 leading-relaxed">
-                                    Ciparay, Kabupaten Bandung<br>
-                                    Jawa Barat, Indonesia
-                                </p>
-                            </div>
+                            <div class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary dark:text-blue-400 mr-4"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <div><h4 class="text-lg font-bold">Ciparay, Kabupaten Bandung</h4><p class="text-sm text-gray-500">Jawa Barat, Indonesia</p></div>
                         </li>
-                        
                         <li class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-secondary dark:text-green-500">
-                                <i class="fa-solid fa-truck-fast"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-gray-900 dark:text-white">Area Pengiriman</h4>
-                                <p class="mt-1 text-gray-600 dark:text-gray-400">Bandung Raya dan sekitarnya (Cepat & Terjadwal)</p>
-                            </div>
-                        </li>
-
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 mt-1 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-gray-300">
-                                <i class="fa-solid fa-clock"></i>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-gray-900 dark:text-white">Jam Operasional</h4>
-                                <p class="mt-1 text-gray-600 dark:text-gray-400">Senin - Sabtu: 08:00 - 17:00 WIB<br>Minggu: Libur</p>
-                            </div>
+                            <div class="w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-secondary dark:text-green-500 mr-4"><i class="fa-solid fa-truck-fast"></i></div>
+                            <div><h4 class="text-lg font-bold">Area Pengiriman</h4><p class="text-sm text-gray-500">Bandung Raya & sekitarnya</p></div>
                         </li>
                     </ul>
                 </div>
-
-                <div class="relative rounded-2xl overflow-hidden shadow-lg h-[400px] lg:h-auto border border-gray-100 dark:border-gray-800 bg-gray-200 dark:bg-gray-800">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31676.14777507119!2d107.69752844399723!3d-7.065096525164835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c13031070e63%3A0x401e8f1fc28cba0!2sCiparay%2C%20Bandung%20Regency%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1712217600000!5m2!1sen!2sid" 
-                        class="absolute inset-0 w-full h-full" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                <div class="rounded-3xl overflow-hidden h-80 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31676.14777507119!2d107.69752844399723!3d-7.065096525164835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c13031070e63%3A0x401e8f1fc28cba0!2sCiparay%2C%20Bandung%20Regency%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1712217600000!5m2!1sen!2sid" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-gradient-to-br from-primary to-secondary text-white py-20 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="text-3xl sm:text-4xl font-extrabold mb-6 text-white">Siap Meningkatkan Efisiensi dan Kualitas Kebersihan Anda?</h2>
-            <p class="text-lg text-blue-100 mb-10 max-w-2xl mx-auto">Jangan kompromi soal higienitas. Hubungi B2B sekarang dan dapatkan penawaran terbaik serta panduan dari ahlinya.</p>
-            <a href="https://wa.me/62027382" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center px-8 py-4 bg-white text-primary font-bold text-lg rounded-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl">
-                <i class="fa-brands fa-whatsapp text-2xl mr-3 text-green-500"></i> Hubungi Kami via WhatsApp
-            </a>
-        </div>
-    </section>
-
-    <footer id="kontak" class="bg-gray-900 text-gray-300 pt-16 pb-8 border-t border-gray-800 transition-colors duration-300">
+    <!-- 7. FOOTER -->
+    <footer id="kontak" class="bg-gray-900 text-gray-300 pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-gray-800 pb-12">
                 <div class="lg:col-span-2">
-                    <a href="#" class="text-3xl font-extrabold tracking-tight mb-4 block">
-                        <span class="text-white">B</span><span class="text-secondary">2</span><span class="text-white">B</span>
-                    </a>
-                    <p class="text-gray-400 mb-6 max-w-md">Bersih Bersih Bandung (B2B) adalah penyedia solusi kebersihan industrial dan komersial terpercaya, mendukung operasional bisnis Anda dengan produk berstandar tinggi.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition">
-                            <i class="fa-brands fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition">
-                            <i class="fa-solid fa-envelope text-xl"></i>
-                        </a>
+                    <div class="text-3xl font-extrabold tracking-tight mb-4 text-white">
+                        <span>B</span><span class="text-secondary">2</span><span>B</span>
                     </div>
+                    <p class="text-gray-400 max-w-sm">Penyedia solusi kebersihan industrial terpercaya di Bandung.</p>
                 </div>
                 <div>
-                    <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Kontak Kami</h4>
+                    <h4 class="text-white font-bold mb-6">Kontak</h4>
                     <ul class="space-y-4">
-                        <li class="flex items-center"><i class="fa-solid fa-phone text-secondary w-6"></i><span>WhatsApp: 027382</span></li>
-                        <li class="flex items-center"><i class="fa-solid fa-envelope text-secondary w-6"></i><span>dummyacc@gmail.com</span></li>
-                        <li class="flex items-center"><i class="fa-brands fa-instagram text-secondary w-6"></i><span>@dummyacc</span></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-6 uppercase tracking-wider">Lokasi</h4>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fa-solid fa-location-dot text-secondary w-6 mt-1"></i>
-                            <span class="leading-relaxed">Ciparay, Bandung<br>Jawa Barat<br>Indonesia</span>
-                        </li>
+                        <li class="flex items-center"><i class="fa-solid fa-phone text-secondary mr-3"></i> 027382</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                <p>&copy; 2026 B2B (Bersih Bersih Bandung). Hak Cipta Dilindungi.</p>
-                <p class="mt-2 md:mt-0">Industrial Grade Cleaning Solutions</p>
+            <div class="pt-8 text-center text-sm text-gray-500">
+                &copy; 2026 B2B (Bersih Bersih Bandung). Hak Cipta Dilindungi.
             </div>
         </div>
     </footer>
 
     <script>
-        // 1. Script untuk Dark/Light Mode
         const html = document.documentElement;
         const themeToggleBtn = document.getElementById('theme-toggle');
-        const darkIcon = document.getElementById('theme-toggle-dark-icon');
-        const lightIcon = document.getElementById('theme-toggle-light-icon');
         const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-        const darkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
-        const lightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-        function updateIcons(isDark) {
-            if (isDark) {
-                darkIcon.classList.add('hidden');
-                lightIcon.classList.remove('hidden');
-                darkIconMobile.classList.add('hidden');
-                lightIconMobile.classList.remove('hidden');
-            } else {
-                darkIcon.classList.remove('hidden');
-                lightIcon.classList.add('hidden');
-                darkIconMobile.classList.remove('hidden');
-                lightIconMobile.classList.add('hidden');
-            }
-        }
-
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-            updateIcons(true);
-        } else {
-            html.classList.remove('dark');
-            updateIcons(false);
-        }
-
+        // Theme Toggle Logic
         function toggleTheme() {
             html.classList.toggle('dark');
             const isDark = html.classList.contains('dark');
@@ -415,36 +309,31 @@
             updateIcons(isDark);
         }
 
-        themeToggleBtn.addEventListener('click', toggleTheme);
-        themeToggleMobileBtn.addEventListener('click', toggleTheme);
-
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                
-                const icon = mobileMenuBtn.querySelector('i');
-                if (mobileMenu.classList.contains('hidden')) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                } else {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-xmark');
-                }
-            });
+        function updateIcons(isDark) {
+            const darkIcons = [document.getElementById('theme-toggle-dark-icon'), document.getElementById('theme-toggle-dark-icon-mobile')];
+            const lightIcons = [document.getElementById('theme-toggle-light-icon'), document.getElementById('theme-toggle-light-icon-mobile')];
             
-            const mobileLinks = mobileMenu.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                });
-            });
+            darkIcons.forEach(i => isDark ? i.classList.add('hidden') : i.classList.remove('hidden'));
+            lightIcons.forEach(i => isDark ? i.classList.remove('hidden') : i.classList.add('hidden'));
         }
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            updateIcons(true);
+        } else {
+            updateIcons(false);
+        }
+
+        themeToggleBtn.onclick = toggleTheme;
+        themeToggleMobileBtn.onclick = toggleTheme;
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.onclick = () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        };
     </script>
 </body>
 </html>
