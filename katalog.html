@@ -30,36 +30,26 @@
                 }
             }
         }
-        // Script Tambahan: Deteksi Kategori dari URL Hash
-window.addEventListener('DOMContentLoaded', () => {
-    // 1. Ambil kata setelah tanda '#' di URL (contoh: 'Chemical')
-    const hash = window.location.hash.substring(1); 
 
-    if (hash) {
-        // 2. Cari tombol filter yang memiliki data-filter sesuai dengan hash tersebut
-        const targetBtn = document.querySelector(`.filter-btn[data-filter="${hash}"]`);
-        
-        if (targetBtn) {
-            // 3. Simulasikan klik pada tombol tersebut agar fungsi filter berjalan otomatis
-            targetBtn.click();
-            
-            // 4. Opsional: Scroll sedikit ke area produk agar user langsung melihat hasilnya
-            document.getElementById('filterContainer').scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-});
-
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.substring(1); 
+            if (hash) {
+                const targetBtn = document.querySelector(`.filter-btn[data-filter="${hash}"]`);
+                if (targetBtn) {
+                    targetBtn.click();
+                    document.getElementById('filterContainer').scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
     </script>
 
     <style>
-        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         .dark ::-webkit-scrollbar-track { background: #1f2937; }
         ::-webkit-scrollbar-thumb { background: #1a2c7a; border-radius: 4px; }
         .dark ::-webkit-scrollbar-thumb { background: #374151; }
         
-        /* Animasi mulus untuk modal pop-up */
         .modal-enter { opacity: 0; transform: scale(0.95); }
         .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.3s ease-out; }
     </style>
@@ -93,13 +83,12 @@ window.addEventListener('DOMContentLoaded', () => {
                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <i class="fa-solid fa-search text-gray-400"></i>
                 </div>
-                <input type="text" id="searchInput" class="block w-full pl-11 pr-4 py-4 border border-transparent rounded-xl leading-5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all shadow-lg" placeholder="Cari produk (Cth: Taski R4, Mesin Vacuum)...">
+                <input type="text" id="searchInput" class="block w-full pl-11 pr-4 py-4 border border-transparent rounded-xl leading-5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent transition-all shadow-lg" placeholder="Cari produk (Cth: Clax, Taski, R4)...">
             </div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-24 relative z-10">
-        
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-2 flex flex-wrap justify-center gap-2 mb-10 border border-gray-100 dark:border-gray-700 transition-colors duration-300" id="filterContainer">
             <button class="filter-btn active px-6 py-2 rounded-lg text-sm font-bold bg-primary text-white transition-all" data-filter="Semua">Semua</button>
             <button class="filter-btn px-6 py-2 rounded-lg text-sm font-bold bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all" data-filter="Chemical">Chemical</button>
@@ -107,8 +96,7 @@ window.addEventListener('DOMContentLoaded', () => {
             <button class="filter-btn px-6 py-2 rounded-lg text-sm font-bold bg-transparent text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all" data-filter="Aksesori">Aksesori</button>
         </div>
 
-        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            </div>
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
         
         <div id="noProductMsg" class="hidden text-center py-20">
             <i class="fa-solid fa-box-open text-6xl text-gray-300 dark:text-gray-600 mb-4"></i>
@@ -119,7 +107,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     <div id="productModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            
             <div class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
@@ -134,12 +121,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     <div class="w-full sm:w-2/5 bg-gray-50 dark:bg-gray-800 p-8 flex items-center justify-center">
                         <img id="modalImg" src="" alt="Product" class="max-h-64 object-contain drop-shadow-xl">
                     </div>
-                    
                     <div class="w-full sm:w-3/5 p-8">
                         <div class="uppercase tracking-wide text-xs font-bold text-secondary dark:text-green-500 mb-1" id="modalCategory">Kategori</div>
                         <h3 class="text-2xl font-extrabold text-gray-900 dark:text-white mb-2" id="modalTitle">Nama Produk</h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed" id="modalDesc">Deskripsi detail produk akan muncul di sini.</p>
-                        
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed" id="modalDesc">Deskripsi detail produk.</p>
                         <div class="mt-auto">
                             <a href="https://wa.me/62027382" target="_blank" class="w-full flex items-center justify-center px-4 py-3 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-primary hover:bg-primaryDark transition-colors focus:outline-none">
                                 <i class="fa-brands fa-whatsapp text-lg mr-2 text-green-400"></i> Pesan Sekarang
@@ -152,101 +137,125 @@ window.addEventListener('DOMContentLoaded', () => {
     </div>
 
     <script>
-        // ==========================================
-        // 1. DATA-DRIVEN UI: INVENTARIS PRODUK B2B
-        // ==========================================
         const products = [
             {
                 id: 1,
-                name: "Diversey Taski Furniture Polish R4",
+                name: "Diversey Clax Activ 4AP1",
                 category: "Chemical",
-                image: "diverseygäó clax-« activ 4ap1_20260321_155058_0000.png",
-                desc: "Cairan pembersih dan pengkilap furnitur profesional. Diformulasikan khusus untuk merawat permukaan kayu, menjaga kilau alami, dan mencegah penumpukan debu. Cocok untuk area perkantoran dan perhotelan."
+                image: "b2bn/DiverseyClaxActiv4AP1.png",
+                desc: "Bubuk pemutih berbasis oksigen yang dirancang khusus untuk penggunaan laundry profesional dan komersial."
             },
             {
                 id: 2,
-                name: "Diversey Taski R9",
+                name: "Diversey Clax Build Lite 12A1",
                 category: "Chemical",
-                image: "https://i.postimg.cc/Gh2nhvWW/Diversey_Taski_R9_20260321_134119_0000.png",
-                desc: "Pembersih khusus kamar mandi yang sangat efektif menghilangkan noda air, sisa sabun, dan kerak ringan pada ubin serta porselen. Meninggalkan aroma segar dan higienis."
+                image: "b2bn/DiverseyClaxBuildLite12A1.png",
+                desc: "Alkali builder cair sebagai booster untuk membantu deterjen utama mengangkat noda berat berbasis lemak dan minyak."
             },
             {
                 id: 3,
-                name: "Diversey Taski Complete ProX",
+                name: "Diversey Clax Mild 33B1",
                 category: "Chemical",
-                image: "https://i.postimg.cc/WbHLDhjv/Diversey_Taski_Complete_Pro_X_20260321_133908_0000.png",
-                desc: "Pelapis lantai (floor finish) tugas berat. Memberikan perlindungan ekstra pada permukaan lantai dengan kilap tahan lama yang tahan terhadap goresan lalu lintas tinggi."
+                image: "b2bn/DiverseyClaxMild33B1.png",
+                desc: "Deterjen cair konsentrat yang efektif mencuci kain katun dan poliester dengan sistem manajemen kesadahan air."
             },
             {
                 id: 4,
-                name: "Taski Vacumat 44T",
-                category: "Mesin",
-                image: "https://i.postimg.cc/g2L93mkV/Taski_vacumat_44T_20260321_140708_0000.png",
-                desc: "Mesin pembersih elektronik vacuum basah dan kering dengan kapasitas tangki yang besar. Dirancang ergonomis dengan daya hisap tinggi untuk menunjang produktivitas area industri/komersial."
+                name: "Diversey Demon Pine",
+                category: "Chemical",
+                image: "b2bn/DiverseyDemonPIne.png",
+                desc: "Cairan pembersih lantai dengan aroma cemara yang segar dan efektif membunuh kuman."
             },
             {
                 id: 5,
-                name: "Vacuum Bag 8/15 Plus",
+                name: "Diversey Diversol CX",
+                category: "Chemical",
+                image: "b2bn/DiverseyDiversolCX.png",
+                desc: "Bubuk disinfektan dan pembersih berbasis klorin untuk sanitasi area dapur dan permukaan keras."
+            },
+            {
+                id: 6,
+                name: "Diversey Divossan Hypoclorit VT3",
+                category: "Chemical",
+                image: "b2bn/DiverseyDivossanHypocloritVT3.png",
+                desc: "Disinfektan berbasis hipoklorit untuk aplikasi industri makanan dan minuman."
+            },
+            {
+                id: 7,
+                name: "Diversey Rust 6FL1",
+                category: "Chemical",
+                image: "b2bn/DiverseyRust6FL1.png",
+                desc: "Cairan pembersih karat dan kerak mineral yang kuat untuk permukaan metal."
+            },
+            {
+                id: 8,
+                name: "Diversey Soft 5CL1",
+                category: "Chemical",
+                image: "b2bn/DiverseySoft5CL1.png",
+                desc: "Pelembut pakaian konsentrat yang memberikan kelembutan ekstra dan aroma segar pada cucian laundry."
+            },
+            {
+                id: 9,
+                name: "Diversey Sonril Ultra",
+                category: "Chemical",
+                image: "b2bn/DiverseySonrilUltra.png",
+                desc: "Pembersih serbaguna yang sangat kuat untuk menghilangkan noda minyak dan lemak pada lantai industri."
+            },
+            {
+                id: 10,
+                name: "Softcare Dese Spray",
+                category: "Chemical",
+                image: "b2bn/diverseysoftcaredesespray.png",
+                desc: "Cairan sanitasi tangan instan yang aman bagi kulit dan efektif membunuh bakteri tanpa dibilas."
+            },
+            {
+                id: 11,
+                name: "Diversey Suspend Metal",
+                category: "Chemical",
+                image: "b2bn/diverseysuspendmetal.png",
+                desc: "Cairan perawatan permukaan logam untuk mencegah oksidasi dan menjaga kilau material."
+            },
+            {
+                id: 12,
+                name: "Taski Aero 8/15 Plus Bag",
                 category: "Aksesori",
                 image: "b2bn/taskiaero815plus.png",
-                desc: "Kantong debu pengganti berkualitas tinggi. Membantu menjaga daya hisap vacuum cleaner tetap optimal dan menyaring debu mikro agar tidak kembali ke udara ruangan."
-            }
+                desc: "Kantong debu vacuum cleaner berkualitas tinggi untuk menyaring partikel mikro secara maksimal."
+            },
             {
-                id: 5,
-                name: "Diversey Clax Activ 4AP1"
-                category: "Chemical",
-                image: "DiverseyClaxActiv4AP1.png",
-                desc: "Bubuk pemutih berbasis oksigen (sodium carbonate) yang dirancang khusus untuk penggunaan laundry profesional dan komersial."
-             }
-        {
-            id: "7"
-            name: "Diversey Clax Build Lite 12A1"
-            category: "Chemical"
-            image: "DiverseyClaxBuildLite12A1.png"
-            desc: "alkali builder (penguat deterjen) cair yang dirancang khusus untuk sistem pencucian laundry komersial dan industri. Produk ini berfungsi sebagai booster untuk membantu deterjen utama dalam mengangkat noda berat, terutama yang berbasis lemak dan minyak."
-        }
-        {
-            id: "8"
-            name: "Diversey Clax Mild 33B1"
-            category: "Chemical"
-            image: "DiverseyClaxMild33B1.png"
-            desc: "eterjen cair konsentrat yang sangat efektif untuk mencuci kain berbahan katun maupun poliester-katun. Produk ini menggabungkan surfaktan non-ionik dan anionik untuk mengangkat noda lemak serta sistem manajemen kesadahan air untuk mencegah pengendapan mineral."
-        }
-        // ==========================================
-        // 2. LOGIKA RENDERING & SPA (Single Page App)
-        // ==========================================
+                id: 13,
+                name: "Taski Vacumat 22",
+                category: "Mesin",
+                image: "b2bn/taskivacuumat22.png",
+                desc: "Mesin vacuum basah dan kering yang tangguh dengan daya hisap tinggi untuk kebutuhan industrial."
+            }
+        ];
+
         const grid = document.getElementById('productGrid');
         const searchInput = document.getElementById('searchInput');
         const filterBtns = document.querySelectorAll('.filter-btn');
         const noProductMsg = document.getElementById('noProductMsg');
 
-        // Fungsi mencetak kartu HTML dari data array
         function renderProducts(dataToRender) {
-            grid.innerHTML = ''; // Bersihkan grid
-            
+            grid.innerHTML = '';
             if(dataToRender.length === 0) {
                 noProductMsg.classList.remove('hidden');
             } else {
                 noProductMsg.classList.add('hidden');
-                
                 dataToRender.forEach(product => {
                     const card = document.createElement('div');
                     card.className = "bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer";
-                    // Menambahkan fungsi openModal saat kartu diklik
                     card.onclick = () => openModal(product);
-                    
                     card.innerHTML = `
-                        <div class="h-56 bg-gray-50 dark:bg-gray-800 p-6 flex items-center justify-center relative overflow-hidden">
-                            <div class="absolute top-3 left-3 px-3 py-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur text-xs font-bold rounded-full text-secondary dark:text-green-500 border border-gray-100 dark:border-gray-700">
+                        <div class="h-64 bg-gray-50 dark:bg-gray-800 p-8 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute top-4 left-4 z-20 px-3 py-1.5 bg-white/95 dark:bg-gray-900/95 backdrop-blur shadow-md text-[10px] font-black uppercase tracking-widest rounded-lg text-secondary dark:text-green-500 border border-gray-100 dark:border-gray-700">
                                 ${product.category}
                             </div>
-                            <img src="${product.image}" alt="${product.name}" class="max-h-full object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-md">
+                            <img src="${product.image}" alt="${product.name}" class="relative z-10 max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-xl">
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-tight">${product.name}</h3>
-                            <button class="mt-auto w-full text-center text-sm font-bold text-primary dark:text-blue-400 border border-primary dark:border-blue-500 rounded-lg py-2 group-hover:bg-primary group-hover:text-white dark:group-hover:bg-blue-600 transition-colors">
-                                Lihat Spesifikasi
-                            </button>
+                        <div class="p-6 flex flex-col flex-grow border-t border-gray-50 dark:border-gray-800">
+                            <h3 class="text-sm md:text-base font-extrabold text-gray-900 dark:text-white mb-4 leading-snug h-12 overflow-hidden">${product.name}</h3>
+                            <button class="mt-auto w-full text-center text-xs font-bold text-primary dark:text-blue-400 border-2 border-primary/20 dark:border-blue-500/30 rounded-xl py-3 group-hover:bg-primary group-hover:text-white dark:group-hover:bg-blue-600 transition-all duration-300">Lihat Spesifikasi</button>
                         </div>
                     `;
                     grid.appendChild(card);
@@ -254,42 +263,28 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Render semua produk saat pertama kali halaman dibuka
         renderProducts(products);
 
-        // ==========================================
-        // 3. FITUR PENCARIAN & FILTERING
-        // ==========================================
         let currentFilter = 'Semua';
-
         function filterAndSearch() {
             const searchTerm = searchInput.value.toLowerCase();
-            
             const filteredData = products.filter(product => {
                 const matchCategory = currentFilter === 'Semua' || product.category === currentFilter;
                 const matchSearch = product.name.toLowerCase().includes(searchTerm) || product.desc.toLowerCase().includes(searchTerm);
                 return matchCategory && matchSearch;
             });
-            
             renderProducts(filteredData);
         }
 
-        // Event Search
         searchInput.addEventListener('input', filterAndSearch);
-
-        // Event Filter Buttons
         filterBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                // Hapus style aktif dari semua tombol
                 filterBtns.forEach(b => {
                     b.classList.remove('bg-primary', 'text-white');
                     b.classList.add('bg-transparent', 'text-gray-600', 'dark:text-gray-300');
                 });
-                
-                // Tambahkan style aktif ke tombol yang diklik
                 e.target.classList.remove('bg-transparent', 'text-gray-600', 'dark:text-gray-300');
                 e.target.classList.add('bg-primary', 'text-white');
-                
                 currentFilter = e.target.getAttribute('data-filter');
                 filterAndSearch();
             });
@@ -307,22 +302,15 @@ window.addEventListener('DOMContentLoaded', () => {
             mCat.innerText = product.category;
             mTitle.innerText = product.name;
             mDesc.innerText = product.desc;
-            
             modal.classList.remove('hidden');
-            
-            setTimeout(() => {
-                modalContent.classList.add('modal-enter-active');
-            }, 10);
+            setTimeout(() => { modalContent.classList.add('modal-enter-active'); }, 10);
         }
 
         function closeModal() {
             modalContent.classList.remove('modal-enter-active');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300); 
+            setTimeout(() => { modal.classList.add('hidden'); }, 300); 
         }
 
-        
         const html = document.documentElement;
         const themeToggleBtn = document.getElementById('theme-toggle');
         const darkIcon = document.getElementById('theme-toggle-dark-icon');
